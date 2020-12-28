@@ -65,10 +65,10 @@ const Home = ({ setAuth }) => {
   return (
     <Fragment>
       
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo03"
@@ -76,15 +76,15 @@ const Home = ({ setAuth }) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="">
+          <a className="navbar-brand" href="">
             Fashion Model Search
           </a>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form class="d-flex">
-              <p class="me-2">Welcome {name}!</p>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <form className="d-flex">
+              <p className="me-2">Welcome {name}!</p>
               {/* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
               {/* <button class="btn btn-outline-success" type="submit">Search</button> */}
               <button className="btn btn-danger" onClick={(e) => logout(e)}>
@@ -95,7 +95,7 @@ const Home = ({ setAuth }) => {
         </div>
       </nav>
 
-      <div class="imgcontainer text-center my-3">
+      <div className="imgcontainer text-center my-3">
         <img src={modelPic} alt="Sign-in" width="250" height="150" />
       </div>
       <div className='container'>

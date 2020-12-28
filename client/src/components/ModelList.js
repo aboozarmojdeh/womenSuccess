@@ -1,17 +1,17 @@
 import React, { useEffect, useContext, Fragment,useState } from "react";
 import { useHistory } from "react-router-dom";
-import RestaurantFinder from "../apis/RestaurantFinder";
-import { RestaurantsContext } from "../context/RestaurantsContext";
+import ModelFinder from "../apis/ModelFinder";
+import { ModelsContext } from "../context/ModelsContext";
 import StarRating from "./StarRating";
 const ModelList = (props) => {
   let history = useHistory();
-  const { models, setModels } = useContext(RestaurantsContext);
+  const { models, setModels } = useContext(ModelsContext);
   const [facePhoto,setFacePhoto]=useState([]);
   
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await RestaurantFinder.get("/");
+        const response = await ModelFinder.get("/");
         setModels(response.data.data.models);
         console.log(response.data.data.models);
       } catch (err) {
@@ -52,7 +52,7 @@ const ModelList = (props) => {
   const handleDeleteModel = async (e, id) => {
     e.stopPropagation();
     try {
-      const response = await RestaurantFinder.delete(`/${id}`);
+      const response = await ModelFinder.delete(`/${id}`);
       setModels(
         models.filter((model) => {
           return model.id !== id;

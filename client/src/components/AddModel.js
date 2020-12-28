@@ -1,8 +1,8 @@
 import React, { useState,useContext } from 'react'
-import RestaurantFinder from '../apis/RestaurantFinder';
-import { RestaurantsContext } from '../context/RestaurantsContext';
+import ModelFinder from '../apis/ModelFinder';
+import { ModelsContext } from '../context/ModelsContext';
 const AddModel = () => {
-    const {addModels}=useContext(RestaurantsContext)
+    const {addModels}=useContext(ModelsContext)
     const [name, setName ] = useState("");
     const [ location, setLocation ] = useState("");
     const [ rankRange, setRankRange ] = useState("Rank Range");
@@ -21,7 +21,7 @@ const AddModel = () => {
         e.preventDefault();
         
         try {
-            const addModel=await RestaurantFinder.post('/',{
+            const addModel=await ModelFinder.post('/',{
                 name:name,
                 location:location,
                 rank_range:rankRange

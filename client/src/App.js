@@ -14,8 +14,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Main from "./components/Main";
 import UpdatePage from './routes/UpdatePage';
-import RestaurantDetailPage from './routes/RestaurantDetailPage';
-import {RestaurantContextProvider} from './context/RestaurantsContext';
+import ModelDetailPage from './routes/ModelDetailPage';
+import {ModelContextProvider} from './context/ModelsContext';
 
 toast.configure();
 
@@ -44,7 +44,7 @@ const App = () => {
   }, []);
 
   return (
-    <RestaurantContextProvider>
+    <ModelContextProvider>
     <Fragment>
       <Router>
         <div className="container">
@@ -103,7 +103,7 @@ const App = () => {
               path="/models/:id"
               render={(props) =>
                 isAuthenticated ? (
-                  <RestaurantDetailPage {...props} setAuth={setAuth} />
+                  <ModelDetailPage {...props} setAuth={setAuth} />
                 ) : (
                   <Redirect to="/login" />
                 )
@@ -113,7 +113,7 @@ const App = () => {
         </div>
       </Router>
     </Fragment>
-    </RestaurantContextProvider>
+    </ModelContextProvider>
   );
 };
 

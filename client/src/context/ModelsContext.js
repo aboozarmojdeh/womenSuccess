@@ -1,8 +1,8 @@
 import React , {useState, createContext} from 'react';
 
-export const RestaurantsContext=createContext();
+export const ModelsContext=createContext();
 
-export const RestaurantContextProvider=(props)=>{
+export const ModelContextProvider=(props)=>{
 
     const [models,setModels]=useState([]);
     const [selectedModel,setSelectedModel]=useState(null)
@@ -12,8 +12,8 @@ export const RestaurantContextProvider=(props)=>{
     }
 
     return(
-        <RestaurantsContext.Provider value={{models,setModels,addModels,selectedModel,setSelectedModel}}>
+        <ModelsContext.Provider value={{models,setModels,addModels,selectedModel,setSelectedModel}}>
             {props.children}
-        </RestaurantsContext.Provider>
+        </ModelsContext.Provider>
     )
 }

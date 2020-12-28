@@ -1,12 +1,12 @@
 import React, { useState, useContext,useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import RestaurantFinder from '../apis/RestaurantFinder';
-import { RestaurantsContext } from '../context/RestaurantsContext';
+import ModelFinder from '../apis/ModelFinder';
+import { ModelsContext } from '../context/ModelsContext';
 
 const UpdateModel = (props) => {
     const { id } = useParams();
     let history=useHistory();
-    const { models } = useContext(RestaurantsContext)
+    const { models } = useContext(ModelsContext)
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
     const [rankRange, setRankRange] = useState('');
@@ -15,7 +15,7 @@ const UpdateModel = (props) => {
         const fetchData=async()=>{
             try {
                 
-                    const response=await RestaurantFinder.get(`/${id}`);
+                    const response=await ModelFinder.get(`/${id}`);
                     
                     console.log(response.data.data.model)
                     setName(response.data.data.model.name)
@@ -38,7 +38,7 @@ const UpdateModel = (props) => {
 
     const handleUpdateModel = async(e) => {
 e.preventDefault();
-const updateModel=await RestaurantFinder.put(`/${id}`,{
+const updateModel=await ModelFinder.put(`/${id}`,{
     name:name,
     location:location,
     rank_range:rankRange

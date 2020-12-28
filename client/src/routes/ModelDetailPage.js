@@ -1,20 +1,20 @@
 import React, { Fragment, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import RestaurantFinder from '../apis/RestaurantFinder';
+import ModelFinder from '../apis/ModelFinder';
 import Reviews from '../components/Reviews';
-import { RestaurantsContext } from '../context/RestaurantsContext';
+import { ModelsContext } from '../context/ModelsContext';
 import AddReview from '../components/AddReview';
 import StarRating from '../components/StarRating';
-const RestaurantDetailPage = () => {
+const ModelDetailPage = () => {
 
     const { id } = useParams();
-    const { selectedModel, setSelectedModel } = useContext(RestaurantsContext);
+    const { selectedModel, setSelectedModel } = useContext(ModelsContext);
 
     useEffect(() => {
         try {
             const fetchData = async () => {
 
-                const response = await RestaurantFinder.get(`/${id}`);
+                const response = await ModelFinder.get(`/${id}`);
                 console.log(response.data.data)
                 setSelectedModel(response.data.data)
 
@@ -52,4 +52,4 @@ const RestaurantDetailPage = () => {
     )
 }
 
-export default RestaurantDetailPage
+export default ModelDetailPage

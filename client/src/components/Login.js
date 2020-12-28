@@ -42,20 +42,20 @@ const Login = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <ul class="nav justify-content-end my-3">
+      <ul className="nav justify-content-end my-3">
          
-         <li class="nav-item">
-           <a class="nav-link btn btn-outline-primary" aria-current="page" href="/">
+         <li className="nav-item">
+           <a className="nav-link btn btn-outline-primary" aria-current="page" href="/">
              Home
            </a>
          </li>
        </ul>
-      <div class="imgcontainer text-center my-3">
+      <div className="imgcontainer text-center my-3">
         <img src={signIn} alt="Sign-in" width="250" height="150" />
       </div>
 
       <form onSubmit={onSubmitForm}>
-        <label for="email">
+        <label htmlFor="email">
           <b>Email</b>
         </label>
         <input
@@ -66,7 +66,7 @@ const Login = ({ setAuth }) => {
           value={email}
           onChange={(e) => handleOnchange(e)}
         />
-        <label for="password">
+        <label htmlFor="password">
           <b>Password</b>
         </label>
         <input

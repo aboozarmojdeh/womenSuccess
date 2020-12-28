@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams,useLocation,useHistory } from "react-router-dom";
-import RestaurantFinder from '../apis/RestaurantFinder';
+import ModelFinder from '../apis/ModelFinder';
 const AddReview = () => {
   const [name, setName] = useState("");
   const [reviewText, setReviewText] = useState("");
@@ -30,7 +30,7 @@ const AddReview = () => {
     e.preventDefault();
 
     try {
-        const newReview=await RestaurantFinder.post(`/${id}/addReview`,{
+        const newReview=await ModelFinder.post(`/${id}/addReview`,{
             name:name,
             review:reviewText,
             rating:rating
