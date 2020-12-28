@@ -88,7 +88,7 @@ const App = () => {
 
             <Route
               exact
-              path="/restaurants/:id/update"
+              path="/models/:id/update"
               render={(props) =>
                 isAuthenticated ? (
                   <UpdatePage {...props} setAuth={setAuth} />
@@ -100,7 +100,7 @@ const App = () => {
 
 <Route
               exact
-              path="/restaurants/:id"
+              path="/models/:id"
               render={(props) =>
                 isAuthenticated ? (
                   <RestaurantDetailPage {...props} setAuth={setAuth} />

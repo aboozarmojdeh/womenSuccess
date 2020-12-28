@@ -1,11 +1,11 @@
 import React, { useState,useContext } from 'react'
 import RestaurantFinder from '../apis/RestaurantFinder';
 import { RestaurantsContext } from '../context/RestaurantsContext';
-const AddRestaurant = () => {
-    const {addRestaurants}=useContext(RestaurantsContext)
+const AddModel = () => {
+    const {addModels}=useContext(RestaurantsContext)
     const [name, setName ] = useState("");
     const [ location, setLocation ] = useState("");
-    const [ priceRange, setPriceRange ] = useState("Price Range");
+    const [ rankRange, setRankRange ] = useState("Rank Range");
 
     const nameChange = (event) => {
         setName(event.target.value)
@@ -13,21 +13,21 @@ const AddRestaurant = () => {
     const locationChange = (event) => {
         setLocation(event.target.value)
     };
-    const priceChange = (event) => {
-        setPriceRange(event.target.value)
+    const rankChange = (event) => {
+        setRankRange(event.target.value)
     };
 
-    const handleSubmitRestaurant = async(e) => {
+    const handleSubmitModel = async(e) => {
         e.preventDefault();
         
         try {
-            const addRestaurant=await RestaurantFinder.post('/',{
+            const addModel=await RestaurantFinder.post('/',{
                 name:name,
                 location:location,
-                price_range:priceRange
+                rank_range:rankRange
             })  
-            console.log(addRestaurant)
-            addRestaurants(addRestaurant.data.data.restaurant)
+            console.log(addModel)
+            addModels(addModel.data.data.model)
         } catch (err) {
             console.error(err.message)
         }
@@ -45,8 +45,8 @@ const AddRestaurant = () => {
                         <input value={location} onChange={locationChange} className='form-control' type='text' placeholder='location' />
                     </div>
                     <div className='col'>
-                        <select value={priceRange} onChange={priceChange} className='my-1 mr-sm-2'>
-                            <option disabled={true}>Price Range</option>
+                        <select value={rankRange} onChange={rankChange} className='my-1 mr-sm-2'>
+                            <option disabled={true}>Rank Range</option>
                             <option value='1'>$</option>
                             <option value='2'>$$</option>
                             <option value='3'>$$$</option>
@@ -54,7 +54,7 @@ const AddRestaurant = () => {
                             <option value='5'>$$$$$</option>
                         </select>
                     </div>
-                    <button type="submit" className='btn btn-primary' onClick={handleSubmitRestaurant} >Add</button>
+                    <button type="submit" className='btn btn-primary' onClick={handleSubmitModel} >Add</button>
                 </div>
             </form>
 
@@ -62,4 +62,4 @@ const AddRestaurant = () => {
     )
 }
 
-export default AddRestaurant
+export default AddModel

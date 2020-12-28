@@ -1,0 +1,3 @@
+restaurants ---> models
+price_range ----> rank_range
+restaurant_id ---> model_id

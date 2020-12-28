@@ -21,7 +21,7 @@ const Main = () => {
           <div class="row">
             <div class="col-sm">
               <h1 className="mainPage-h1">
-                Welcome to your YELP clone
+                Welcome to your Fashion Model search
               </h1>
             </div>
             <div class="col-sm">

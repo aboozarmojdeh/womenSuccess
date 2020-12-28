@@ -1,3 +1,5 @@
+/// *** NOTE: this file is not used anywhere
+
 const express = require("express");
 const pool = require("../db");
 const router = express.Router();

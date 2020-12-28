@@ -1,10 +1,10 @@
 import React from 'react'
-import UpdateRestaurant from '../components/UpdateRestaurant'
+import UpdateRestaurant from '../components/UpdateModel'
 
 const UpdatePage = () => {
     return (
         <div>
-           <h1 className='text-center'>Update Restaurant</h1>
+           <h1 className='text-center'>Update Model</h1>
            <UpdateRestaurant /> 
         </div>
     )

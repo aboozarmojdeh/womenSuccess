@@ -3,13 +3,13 @@ import { useHistory, useParams } from 'react-router-dom'
 import RestaurantFinder from '../apis/RestaurantFinder';
 import { RestaurantsContext } from '../context/RestaurantsContext';
 
-const UpdateRestaurant = (props) => {
+const UpdateModel = (props) => {
     const { id } = useParams();
     let history=useHistory();
-    const { restaurants } = useContext(RestaurantsContext)
+    const { models } = useContext(RestaurantsContext)
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
-    const [priceRange, setPriceRange] = useState('');
+    const [rankRange, setRankRange] = useState('');
 
     useEffect(() => {
         const fetchData=async()=>{
@@ -17,10 +17,10 @@ const UpdateRestaurant = (props) => {
                 
                     const response=await RestaurantFinder.get(`/${id}`);
                     
-                    console.log(response.data.data.restaurant)
-                    setName(response.data.data.restaurant.name)
-                    setLocation(response.data.data.restaurant.location)
-                    setPriceRange(response.data.data.restaurant.price_range)
+                    console.log(response.data.data.model)
+                    setName(response.data.data.model.name)
+                    setLocation(response.data.data.model.location)
+                    setRankRange(response.data.data.model.rank_range)
                 }catch (err) {
                 console.error(err.message)
             }}
@@ -32,16 +32,16 @@ const UpdateRestaurant = (props) => {
     const locationChange = (event) => {
         setLocation(event.target.value)
     };
-    const priceChange = (event) => {
-        setPriceRange(event.target.value)
+    const rankChange = (event) => {
+        setRankRange(event.target.value)
     };
 
-    const handleUpdateRestaurant = async(e) => {
+    const handleUpdateModel = async(e) => {
 e.preventDefault();
-const updateRestaurant=await RestaurantFinder.put(`/${id}`,{
+const updateModel=await RestaurantFinder.put(`/${id}`,{
     name:name,
     location:location,
-    price_range:priceRange
+    rank_range:rankRange
 })
 history.push('/dashboard');
     };
@@ -59,13 +59,13 @@ history.push('/dashboard');
                     <input value={location} onChange={locationChange} id='location' className='form-control' type='text' />
                 </div>
                 <div className='form-group'>
-                    <label htmlFor='price_range'>Price Range</label>
-                    <input value={priceRange} onChange={priceChange} id='price_range' className='form-control' type='number' />
+                    <label htmlFor='rank_range'>Rank Range</label>
+                    <input value={rankRange} onChange={rankChange} id='rank_range' className='form-control' type='number' />
                 </div>
-                <button type='submit' onClick={handleUpdateRestaurant} className='btn btn-primary'>Submit</button>
+                <button type='submit' onClick={handleUpdateModel} className='btn btn-primary'>Submit</button>
             </form>
         </div>
     )
 }
 
-export default UpdateRestaurant
+export default UpdateModel

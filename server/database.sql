@@ -1,4 +1,4 @@
-CREATE DATABASE fashionmodels;
+CREATE DATABASE womensuccess;
 -- \x on ---> diplay on
 
 -- If you want to generate a UUID value solely based on 
@@ -21,24 +21,24 @@ CREATE TABLE users(
     user_email VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL
 );
-INSERT INTO users (user_name,user_email,user_password) VALUES ('Aboozar Mojdeh','aboozar.mojdeh@gmail.com','mypassword');
+INSERT INTO users (user_name,user_email,user_password) VALUES ('Aboozar Mojdeh','aboozar.mojdeh@gmail.com','123');
 
 
-CREATE TABLE restaurants (
+CREATE TABLE models (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     location VARCHAR(50) NOT NULL,
-    price_range INT NOT NULL CHECK(price_range >=1 AND price_range <= 5)
+    rank_range INT NOT NULL CHECK(rank_range >=1 AND rank_range <= 5)
 );
-INSERT INTO restaurants (name,location,price_range) VALUES ('McDonalds','richmond hill',5);
-INSERT INTO restaurants (name,location,price_range) VALUES ('Burger King','Thorn hill',3);
+INSERT INTO models (name,location,rank_range) VALUES ('katty perry','richmond hill',5);
+INSERT INTO models (name,location,rank_range) VALUES ('milla juvovich','Thorn hill',3);
 
 CREATE TABLE reviews (
     id BIGSERIAL NOT NULL PRIMARY KEY,
-    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id) on delete cascade on update cascade,
+    model_id BIGINT NOT NULL REFERENCES models(id) on delete cascade on update cascade,
     name VARCHAR(50) NOT NULL,
    review TEXT NOT NULL,
     rating INT NOT NULL CHECK(rating >=1 AND rating<=5 )
 );
-INSERT INTO reviews (restaurant_id,name,review,rating) VALUES (1,'aboozar','shit restaurant',3);
+INSERT INTO reviews (model_id,name,review,rating) VALUES (1,'aboozar','perfect body shape',3);
 

@@ -3,24 +3,24 @@ import { useHistory } from "react-router-dom";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { RestaurantsContext } from "../context/RestaurantsContext";
 import StarRating from "./StarRating";
-const RestaurantList = (props) => {
+const ModelList = (props) => {
   let history = useHistory();
-  const { restaurants, setRestaurants } = useContext(RestaurantsContext);
+  const { models, setModels } = useContext(RestaurantsContext);
   const [facePhoto,setFacePhoto]=useState([]);
   
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await RestaurantFinder.get("/");
-        setRestaurants(response.data.data.restaurants);
-        console.log(response.data.data.restaurants);
+        setModels(response.data.data.models);
+        console.log(response.data.data.models);
       } catch (err) {
         console.error(err.message);
       }
     };
     fetchData();
-    console.log('restaurants',restaurants)
-    uiFacesFetch(restaurants.length);
+    console.log('models',models)
+    uiFacesFetch(models.length);
   }, []);
 
   const uiFacesFetch = async (number) => {
@@ -49,13 +49,13 @@ const RestaurantList = (props) => {
    
 //   };
 
-  const handleDeleteRestaurant = async (e, id) => {
+  const handleDeleteModel = async (e, id) => {
     e.stopPropagation();
     try {
       const response = await RestaurantFinder.delete(`/${id}`);
-      setRestaurants(
-        restaurants.filter((restaurant) => {
-          return restaurant.id !== id;
+      setModels(
+        models.filter((model) => {
+          return model.id !== id;
         })
       );
     } catch (err) {
@@ -63,40 +63,40 @@ const RestaurantList = (props) => {
     }
   };
 
-  const handleUpdateRestaurant = (e, id) => {
+  const handleUpdateModel = (e, id) => {
     e.stopPropagation();
-    history.push(`/restaurants/${id}/update`);
+    history.push(`/models/${id}/update`);
   };
 
-  const handleRestaurantSelect = (id) => {
-    history.push(`/restaurants/${id}`);
+  const handleModelSelect = (id) => {
+    history.push(`/models/${id}`);
   };
-  const renderRating = (restaurant) => {
-    if (!restaurant.count) {
+  const renderRating = (model) => {
+    if (!model.count) {
       return <span className="text-warning">0 reviews</span>;
     }
     return (
       <Fragment>
-        <StarRating rating={restaurant.average_rating} />
-        <span className="text-warning ml-1">({restaurant.count})</span>
+        <StarRating rating={model.average_rating} />
+        <span className="text-warning ml-1">({model.count})</span>
       </Fragment>
     );
   };
-  const restaurantArray = restaurants.map((restaurant,index) => {
+  const modelArray = models.map((model,index) => {
     // uiFacesFetch(restaurants.length);
     return (
       <tr
-        onClick={() => handleRestaurantSelect(restaurant.id)}
-        key={restaurant.id}
+        onClick={() => handleModelSelect(model.id)}
+        key={model.id}
       >
-        <td>{restaurant.name}</td>
-        <td>{restaurant.location}</td>
-        <td>{"$".repeat(restaurant.price_range)}</td>
-        <td>{renderRating(restaurant)}</td>
+        <td>{model.name}</td>
+        <td>{model.location}</td>
+        <td>{"$".repeat(model.rank_range)}</td>
+        <td>{renderRating(model)}</td>
         <td>{!facePhoto.length ? <div>Waiting</div>:<img alt='model-face' src={facePhoto[index].photo} style={{borderRadius:'50%'}} width='100px' height='100px'/>}</td>
         <td>
           <button
-            onClick={(e) => handleUpdateRestaurant(e, restaurant.id)}
+            onClick={(e) => handleUpdateModel(e, model.id)}
             className="btn btn-warning"
           >
             Update
@@ -104,7 +104,7 @@ const RestaurantList = (props) => {
         </td>
         <td>
           <button
-            onClick={(e) => handleDeleteRestaurant(e, restaurant.id)}
+            onClick={(e) => handleDeleteModel(e, model.id)}
             className="btn btn-danger"
           >
             Delete
@@ -119,9 +119,9 @@ const RestaurantList = (props) => {
       <table className="table table-dark table-hover">
         <thead>
           <tr className="bg-primary">
-            <th scope="col">Restaurant</th>
+            <th scope="col">Model Name</th>
             <th scope="col">Location</th>
-            <th scope="col">Price Range</th>
+            <th scope="col">Rank Range</th>
             <th scope="col">Ratings</th>
             <th scope="col">Photo</th>
             <th scope="col">Edit</th>
@@ -129,7 +129,7 @@ const RestaurantList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {restaurantArray}
+          {modelArray}
           {/* <tr>
       
       <td>McDonalds</td>
@@ -155,4 +155,4 @@ const RestaurantList = (props) => {
   );
 };
 
-export default RestaurantList;
+export default ModelList;

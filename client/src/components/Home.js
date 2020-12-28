@@ -2,8 +2,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import modelPic from "../img/modelPic.png";
 // import Home from './Home';
-import AddRestaurant from './AddRestaurant';
-import RestaurantList from './RestaurantList';
+import AddModel from './AddModel';
+import ModelList from './ModelList';
 const Home = ({ setAuth }) => {
   const [name, setName] = useState("");
   const [modelName, setModelName] = useState("");
@@ -79,7 +79,7 @@ const Home = ({ setAuth }) => {
             <span class="navbar-toggler-icon"></span>
           </button>
           <a class="navbar-brand" href="">
-            YELP Restaurant Search
+            Fashion Model Search
           </a>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
@@ -99,8 +99,8 @@ const Home = ({ setAuth }) => {
         <img src={modelPic} alt="Sign-in" width="250" height="150" />
       </div>
       <div className='container'>
-      <AddRestaurant />
-      <RestaurantList />
+      <AddModel />
+      <ModelList />
       </div>
          
 {/* // Search are temporary closed */}

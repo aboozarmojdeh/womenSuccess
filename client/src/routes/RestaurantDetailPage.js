@@ -8,7 +8,7 @@ import StarRating from '../components/StarRating';
 const RestaurantDetailPage = () => {
 
     const { id } = useParams();
-    const { selectedRestaurant, setSelectedRestaurant } = useContext(RestaurantsContext);
+    const { selectedModel, setSelectedModel } = useContext(RestaurantsContext);
 
     useEffect(() => {
         try {
@@ -16,11 +16,9 @@ const RestaurantDetailPage = () => {
 
                 const response = await RestaurantFinder.get(`/${id}`);
                 console.log(response.data.data)
-                setSelectedRestaurant(response.data.data)
+                setSelectedModel(response.data.data)
 
-                // const response2 = await RestaurantFinder.get(`/${id}/reviews`);
-                // console.log(response2.data.data.reviews)
-                // setSelectedRestaurant(response1.data.data.restaurant)
+        
             }
             fetchData();
 
@@ -31,18 +29,18 @@ const RestaurantDetailPage = () => {
 
     }, [])
     return (
-        <div>{selectedRestaurant && (
+        <div>{selectedModel && (
             <Fragment>
-                <h1 className="text-center display-1">{selectedRestaurant.restaurant.name}</h1>
+                <h1 className="text-center display-1">{selectedModel.model.name}</h1>
                 <div className='text-center'>
-                    <StarRating rating={selectedRestaurant.restaurant.average_rating} />
+                    <StarRating rating={selectedModel.model.average_rating} />
                     <span className="text-warning ml-1">
-                        {selectedRestaurant.restaurant.count ? `(${selectedRestaurant.restaurant.count})` : "(0)"}
+                        {selectedModel.model.count ? `(${selectedModel.model.count})` : "(0)"}
 
                     </span>
                 </div>
                 <div className='mt-3'>
-                    <Reviews reviews={selectedRestaurant.reviews} />
+                    <Reviews reviews={selectedModel.reviews} />
 
                 </div>
                 <AddReview />

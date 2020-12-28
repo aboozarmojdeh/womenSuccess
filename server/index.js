@@ -20,7 +20,8 @@ app.use('/dashboard', require("./routes/dashboard"));
 // app.use('/models',require("./routes/models"))
 
 // restaurants route
-app.use('/api/v1/restaurants',require("./routes/restaurants"))
+// app.use('/api/v1/restaurants',require("./routes/restaurants"))
+app.use('/api/v1/models',require("./routes/models"))
 
 
 
