@@ -38,6 +38,7 @@ const AddModel = () => {
         <div className='mb-4'>
             <form>
                 <div className='form-row'>
+                    <div className='input-group mb-3'>
                     <div className='col'>
                         <input value={name} onChange={nameChange} className='form-control' type='text' placeholder='name' />
                     </div>
@@ -45,7 +46,7 @@ const AddModel = () => {
                         <input value={location} onChange={locationChange} className='form-control' type='text' placeholder='location' />
                     </div>
                     <div className='col'>
-                        <select value={rankRange} onChange={rankChange} className='my-1 mr-sm-2'>
+                        <select value={rankRange} onChange={rankChange} className='form-select'>
                             <option disabled={true}>Rank Range</option>
                             <option value='1'>$</option>
                             <option value='2'>$$</option>
@@ -55,6 +56,7 @@ const AddModel = () => {
                         </select>
                     </div>
                     <button type="submit" className='btn btn-primary' onClick={handleSubmitModel} >Add</button>
+                    </div>
                 </div>
             </form>
 

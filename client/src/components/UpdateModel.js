@@ -50,6 +50,7 @@ history.push('/dashboard');
         <div>
         {/* <h1>{restaurants[0].name}</h1> */}
             <form>
+            <div className='input-group mb-3'>
                 <div className='form-group'>
                     <label htmlFor='name'>Name</label>
                     <input value={name} onChange={nameChange} id='name' className='form-control' type='text' />
@@ -62,7 +63,9 @@ history.push('/dashboard');
                     <label htmlFor='rank_range'>Rank Range</label>
                     <input value={rankRange} onChange={rankChange} id='rank_range' className='form-control' type='number' />
                 </div>
+                </div>
                 <button type='submit' onClick={handleUpdateModel} className='btn btn-primary'>Submit</button>
+                
             </form>
         </div>
     )

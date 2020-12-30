@@ -28,10 +28,11 @@ CREATE TABLE models (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     location VARCHAR(50) NOT NULL,
+    photo_path VARCHAR(50),
     rank_range INT NOT NULL CHECK(rank_range >=1 AND rank_range <= 5)
 );
-INSERT INTO models (name,location,rank_range) VALUES ('katty perry','richmond hill',5);
-INSERT INTO models (name,location,rank_range) VALUES ('milla juvovich','Thorn hill',3);
+INSERT INTO models (name,location,photo_path,rank_range) VALUES ('Jenifer Lopez','richmond hill','/uploads/img1.jpg',5);
+INSERT INTO models (name,location,photo_path,rank_range) VALUES ('Serena Williams','Thorn hill','/uploads/img2.jpg',3);
 
 CREATE TABLE reviews (
     id BIGSERIAL NOT NULL PRIMARY KEY,
